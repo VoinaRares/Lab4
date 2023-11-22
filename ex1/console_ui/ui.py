@@ -40,14 +40,13 @@ def user_input():
         read_file = open('input.txt', 'r')
         input_list = []
         are_commands = True
+        for word in read_file:
+            input_list.append(word.strip())
         for character in text:
-            if character + '\n' not in read_file:
+            if character not in input_list:
                 are_commands = False
         read_file.close()
         if are_commands is True:
-            read_file = open('input.txt', 'r')
-            for word in read_file:
-                input_list.append(word.strip())
             for character in text:
                 command = input_list[find_word_pos(input_list, character)]
                 for elem in command:
